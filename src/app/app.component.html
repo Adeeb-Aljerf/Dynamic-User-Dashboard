@@ -74,26 +74,26 @@
         </button>
       </div>
       
-      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <div style="display: flex; justify-content: space-around; margin-top: 10px;">
         <button 
           mat-raised-button 
           class="search-button" 
           (click)="searchUser()" 
           [disabled]="isSearching"
-          style="flex: 1; margin-right: 10px;"
+          style="width: 5rem; margin-right: 10px; "
         >
           
-          <mat-icon *ngIf="!isSearching">person_search</mat-icon>
+         <span>Search</span>
+
           <mat-spinner *ngIf="isSearching" diameter="20"></mat-spinner>
-          <span>Search</span>
         </button>
         
         <button 
           mat-raised-button 
-          style="flex: 0 0 auto; background-color: #f0f0f0; "
+          style="border-radius: 3rem; background-color: #f0f0f0; "
           (click)="toggleMobileSearch()"
         >
-          <mat-icon>close</mat-icon>
+          <!-- <mat-icon>close</mat-icon> -->
           <span>Cancel</span>
         </button>
       </div>

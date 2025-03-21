@@ -316,10 +316,6 @@
     visibility: visible;
   }
 
-  .search-button span {
-    display: none;
-  }
-
   .search-button {
     padding: 0.4rem 2rem;
   }
