@@ -2,6 +2,10 @@
 
 A responsive Angular application that demonstrates modern web development practices including state management with NgRx, animations, and responsive design.
 
+## Live Demo
+
+[View the live application](https://aj-dynamic-user-dashboard.netlify.app/)
+
 ## Features
 
 - User directory with pagination
@@ -19,10 +23,6 @@ A responsive Angular application that demonstrates modern web development practi
 - Angular Material UI components
 - RxJS for reactive programming
 - CSS with responsive design principles
-
-## Live Demo
-
-[View the live application](https://your-demo-url-here.com)
 
 ## Getting Started
 

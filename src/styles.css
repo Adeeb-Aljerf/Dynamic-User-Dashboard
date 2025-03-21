@@ -30,7 +30,7 @@ body {
     Helvetica, Arial, sans-serif;
   background-color: var(--background);
   color: var(--text);
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem; /* Increased from default */
