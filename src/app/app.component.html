@@ -1,0 +1,132 @@
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-content">
+      <div class="app-title" (click)="navigateHome()">
+        <mat-icon>dashboard</mat-icon>
+        {{ title }}
+      </div>
+    
+      <!-- Desktop search -->
+      <div class="search-container">
+        <div class="search-wrapper">
+          <mat-icon class="search-icon">search</mat-icon>
+          <input 
+            type="number" 
+            class="search-input" 
+            [(ngModel)]="searchId" 
+            placeholder="Search by User ID..." 
+            (keyup.enter)="searchUser()"
+            [class.has-error]="searchError"
+          >
+          <button 
+            *ngIf="searchId" 
+            class="clear-button" 
+            (click)="clearSearch()" 
+            matTooltip="Clear search"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        
+        <button 
+          mat-raised-button 
+          class="search-button" 
+          (click)="searchUser()" 
+          [disabled]="isSearching"
+          matTooltip="Search for user"
+        >
+          <mat-icon *ngIf="!isSearching">person_search</mat-icon>
+          <mat-spinner *ngIf="isSearching" diameter="20"></mat-spinner>
+          <span>Search</span>
+        </button>
+      </div>
+      
+      <!-- Mobile search toggle button -->
+      <button 
+        class="mobile-search-toggle" 
+        (click)="toggleMobileSearch()" 
+        matTooltip="Search"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    
+    <!-- Mobile search container -->
+    <div class="mobile-search-container" [class.active]="isMobileSearchVisible">
+      <div class="search-wrapper">
+        <mat-icon class="search-icon">search</mat-icon>
+        
+        <input 
+          type="number" 
+          class="search-input" 
+          [(ngModel)]="searchId" 
+          placeholder="Search by User ID..." 
+          (keyup.enter)="searchUser()"
+          [class.has-error]="searchError"
+        >
+        <button 
+          *ngIf="searchId" 
+          class="clear-button" 
+          (click)="clearSearch()" 
+          matTooltip="Clear search"
+        >
+          <mat-icon>close</mat-icon>
+ 
+        </button>
+      </div>
+      
+      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <button 
+          mat-raised-button 
+          class="search-button" 
+          (click)="searchUser()" 
+          [disabled]="isSearching"
+          style="flex: 1; margin-right: 10px;"
+        >
+          
+          <mat-icon *ngIf="!isSearching">person_search</mat-icon>
+          <mat-spinner *ngIf="isSearching" diameter="20"></mat-spinner>
+          <span>Search</span>
+        </button>
+        
+        <button 
+          mat-raised-button 
+          style="flex: 0 0 auto; background-color: #f0f0f0; "
+          (click)="toggleMobileSearch()"
+        >
+          <mat-icon>close</mat-icon>
+          <span>Cancel</span>
+        </button>
+      </div>
+      
+      <!-- Add error message inside mobile search container -->
+      <div *ngIf="searchError" class="search-error mobile-search-error">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ searchError }}</span>
+      </div>
+    </div>
+    
+    <!-- Desktop error message (outside mobile container) -->
+    <div *ngIf="searchError && !isMobileSearchVisible" class="search-error">
+      <mat-icon>error_outline</mat-icon>
+      <span>{{ searchError }}</span>
+    </div>
+  </header>
+  
+  <main class="app-content" [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+  </main>
+  
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <mat-icon>dashboard</mat-icon>
+        <span>{{ title }}</span>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>© {{ currentYear }} Dynamic User Dashboard. By Adeeb Aljerf</p>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,45 @@
+<div class="user-list-container">
+  <div class="section-header">
+    <h2 class="section-title">User Directory</h2>
+    <p class="section-subtitle">Browse and connect with our team members</p>
+  </div>
+  
+  <div *ngIf="loading$ | async" class="loading-bar">
+    <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+  </div>
+  
+  <div class="user-list" [@listAnimation]="(users$ | async)?.length">
+    <div class="user-card" *ngFor="let user of users$ | async" (click)="navigateToUser(user.id)">
+      <div class="card-content">
+        <div class="avatar-container">
+          <img src="{{ user.avatar }}" alt="{{ user.first_name }} {{ user.last_name }}" 
+          appImageLoad [fallbackSrc]="'assets/placeholder-avatar.png'">
+        </div>
+        <h3 class="user-name">{{ user.first_name }} {{ user.last_name }}</h3>
+        <div class="view-profile">
+          <span>View </span>
+          <mat-icon>visibility</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Support text section -->
+  <div *ngIf="supportText$ | async as supportText" class="support-text">
+    {{ supportText }}
+  </div>
+  
+  <div class="pagination-controls">
+    <button mat-raised-button class="pagination-btn prev-btn" [disabled]="(currentPage$ | async) === 1 || (loading$ | async)" (click)="previousPage()">
+      <mat-icon>arrow_back</mat-icon>
+      Previous
+    </button>
+    <div class="page-indicator">
+      Page {{ currentPage$ | async }} of {{ totalPages$ | async }}
+    </div>
+    <button mat-raised-button class="pagination-btn next-btn" [disabled]="(currentPage$ | async) === (totalPages$ | async) || (loading$ | async)" (click)="nextPage()">
+      Next
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>

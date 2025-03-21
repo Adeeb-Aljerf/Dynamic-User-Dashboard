@@ -1,0 +1,38 @@
+<div class="user-details-container" *ngIf="!(loading$ | async); else loadingTemplate" [@fadeAnimation]>
+  <mat-card class="user-card" *ngIf="selectedUser$ | async as user">
+    <div class="user-header">
+      <button mat-button class="back-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        Back to List
+      </button>
+    </div>
+    
+    <div class="user-profile">
+      <div class="avatar-container">
+        <img src="{{ user.avatar }}" alt="{{ user.first_name }}" 
+        appImageLoad [fallbackSrc]="'assets/placeholder-avatar.png'">
+      </div>
+      
+      <div class="user-info">
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        
+        <div class="info-item">
+          <mat-icon>email</mat-icon>
+          <span>{{ user.email }}</span>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon>person</mat-icon>
+          <span>User ID: {{ user.id }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading user details...</p>
+  </div>
+</ng-template>

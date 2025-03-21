@@ -1,0 +1,270 @@
+/* Global styles */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --primary: #3a36e0;
+  --primary-light: #6c63ff;
+  --primary-dark: #2a26b0;
+  --accent: #ff6584;
+  --background: #f8f9fc;
+  --surface: #ffffff;
+  --text: #2d3748;
+  --text-light: #718096;
+  --success: #48bb78;
+  --warning: #ed8936;
+  --error: #e53e3e;
+  --border-radius: 1.2rem;
+  --shadow-sm: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  /* overflow-x: hidden; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem; /* Increased from default */
+}
+html {
+  /* Set base font size so 10px = 1rem */
+  font-size: 62.5%; /* 62.5% of 16px = 10px */
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+h2 {
+  font-size: 2.8rem;
+}
+h3 {
+  font-size: 2.4rem;
+}
+h4 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.8rem;
+}
+h6 {
+  font-size: 1.6rem;
+}
+
+p {
+  margin-top: 0;
+  color: var(--text-light);
+  font-size: 1.6rem;
+}
+
+/* Material overrides */
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  border-radius: 0.8rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.03rem !important;
+  font-size: 1.4rem !important;
+}
+
+.mat-mdc-card {
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.mat-mdc-progress-bar {
+  border-radius: 0.4rem !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  height: 0 !important;
+}
+
+.mat-mdc-form-field {
+  font-size: 1.4rem !important;
+}
+
+/* Custom Material theme overrides */
+.mat-primary .mat-mdc-progress-bar-fill::after {
+  background-color: var(--primary) !important;
+}
+
+.mat-accent .mat-mdc-progress-bar-fill::after {
+  background-color: var(--accent) !important;
+}
+
+.mat-warn .mat-mdc-progress-bar-fill::after {
+  background-color: var(--error) !important;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Focus styles for accessibility */
+:focus {
+  outline: 0.2rem solid var(--primary-light);
+  outline-offset: 0.2rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Button focus override */
+.mat-mdc-button:focus,
+.mat-mdc-raised-button:focus,
+.mat-mdc-outlined-button:focus,
+.mat-mdc-unelevated-button:focus {
+  outline: none;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+.p-4 {
+  padding: 1rem;
+}
+.m-4 {
+  margin: 1rem;
+}
+.rounded {
+  border-radius: var(--border-radius);
+}
+.shadow {
+  box-shadow: var(--shadow-md);
+}
+
+/* Status colors */
+.text-success {
+  color: var(--success);
+}
+.text-warning {
+  color: var(--warning);
+}
+.text-error {
+  color: var(--error);
+}
+.bg-success {
+  background-color: var(--success);
+}
+.bg-warning {
+  background-color: var(--warning);
+}
+.bg-error {
+  background-color: var(--error);
+}
+
+/* Responsive text sizes */
+@media (max-width: 76.8rem) {
+  html {
+    font-size: 56.25%; /* 56.25% of 16px = 9px */
+  }
+}
+
+@media (max-width: 48rem) {
+  html {
+    font-size: 50%; /* 50% of 16px = 8px */
+  }
+}

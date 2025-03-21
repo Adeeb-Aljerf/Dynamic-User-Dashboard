@@ -1,0 +1,333 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+}
+
+/* Header Styling */
+.app-header {
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0;
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.4rem;
+  height: 7rem;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+}
+
+.app-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.8rem;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.app-title:hover {
+  background-color: rgba(58, 54, 224, 0.05);
+}
+
+.app-title mat-icon {
+  color: var(--primary);
+  font-size: 2.4rem;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+/* Enhanced Search Styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex: 1;
+  max-width: 40rem;
+  min-width: 20rem;
+  transition: all 0.3s ease;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.2rem;
+  color: var(--text-light);
+  font-size: 2rem;
+}
+
+/* Remove up/down arrows from number input */
+.search-input::-webkit-outer-spin-button,
+.search-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.search-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1.2rem 1.2rem 1.2rem 4rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.08);
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  transition: var(--transition);
+  outline: none;
+  color: var(--text);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  background-color: white;
+  box-shadow: 0 0 0 0.4rem rgba(58, 54, 224, 0.1);
+}
+
+.search-input.has-error {
+  border-color: var(--error);
+}
+
+.search-input::placeholder {
+  color: var(--text-light);
+  font-size: 1.5rem;
+}
+
+.clear-button {
+  position: absolute;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.clear-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text);
+}
+
+.search-button {
+  background-color: var(--primary) !important;
+  color: white !important;
+  border-radius: 3rem !important;
+  padding: 0.4rem clamp(0.8rem, 2vw, 2rem);
+  height: 4.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+}
+
+.search-error {
+  background-color: rgba(229, 62, 62, 0.1);
+  color: var(--error);
+  padding: 0.8rem 2.4rem;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.search-error mat-icon {
+  font-size: 1.6rem;
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+/* Mobile search toggle button */
+.mobile-search-toggle {
+  display: none;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 4.2rem;
+  height: 4.2rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.mobile-search-toggle:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mobile search container */
+.mobile-search-container {
+  display: none;
+  position: absolute;
+  top: 7rem;
+  left: 0;
+  right: 0;
+  background-color: var(--surface);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  z-index: 20;
+  transition: all 0.3s ease;
+}
+
+/* Main Content */
+.app-content {
+  flex: 1;
+  padding: 2.4rem;
+  max-width: 140rem;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  /* Add this to ensure content doesn't overflow but still allows scrolling if needed */
+  width: calc(100% - 4.8rem); /* Account for padding */
+}
+
+/* Enhanced Footer Styling */
+.app-footer {
+  background-color: var(--surface);
+  color: var(--text-light);
+  padding: 1rem 2.4rem;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-content {
+  max-width: 140rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.footer-logo mat-icon {
+  font-size: 2.4rem;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.footer-copyright {
+  font-size: 1.4rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-top: 1.6rem;
+}
+.mobile-search-error {
+  margin-top: 10px;
+  border-radius: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 60rem) {
+  .header-content {
+    padding: 0 1.6rem;
+  }
+
+  .search-icon {
+    left: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .search-input {
+    padding: 1rem 1rem 1rem 2.6rem;
+  }
+
+  .app-content {
+    padding: 1.6rem;
+  }
+
+  .footer-content {
+    gap: 2rem;
+  }
+
+  .footer-links {
+    gap: 1.6rem;
+  }
+
+  /* Hide desktop search and show mobile toggle */
+  .search-container {
+    display: none;
+  }
+
+  .mobile-search-toggle {
+    display: flex;
+  }
+
+  /* Show mobile search container when active */
+  .mobile-search-container {
+    display: block;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .mobile-search-container.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .search-button span {
+    display: none;
+  }
+
+  .search-button {
+    padding: 0.4rem 2rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .app-title mat-icon {
+    font-size: 2rem;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+}

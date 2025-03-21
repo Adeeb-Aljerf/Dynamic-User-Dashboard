@@ -1,0 +1,232 @@
+.user-list-container {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 90rem;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  /* background-color: red; */
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(3rem, 5vw, 4rem);
+  height: 0.3rem;
+  background: var(--primary);
+  border-radius: 0.2rem;
+}
+
+.section-subtitle {
+  color: var(--text-light);
+  font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+  margin-top: 1.2rem;
+}
+
+.loading-bar {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+/* Fluid grid layout */
+.user-list {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.user-card {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  cursor: pointer;
+  border: 0.1rem solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  padding: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.user-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix for avatar container to maintain minimum size */
+.avatar-container {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 0.2rem solid var(--primary-light);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+/* Ensure image always fills container */
+.avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-card:hover .avatar-container {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.user-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.6rem 0;
+  transition: var(--transition);
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-card:hover .user-name {
+  color: var(--primary);
+}
+
+.view-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background-color: rgba(58, 54, 224, 0.08);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(0.8rem);
+  border: 0.1rem solid transparent;
+  margin-top: 0.4rem;
+  white-space: nowrap;
+}
+
+.user-card:hover .view-profile {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--primary-light);
+}
+
+.view-profile:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.view-profile mat-icon {
+  font-size: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+/* Support text styling */
+.support-text {
+  text-align: center;
+  padding: 1rem;
+  margin: 0 0 1.5rem 0;
+  background-color: rgba(58, 54, 224, 0.05);
+  border-radius: 0.8rem;
+  color: var(--text);
+  font-size: 1.4rem;
+  border: 0.1rem solid rgba(58, 54, 224, 0.1);
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.05);
+}
+
+.pagination-btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem !important;
+  transition: var(--transition);
+  font-size: 1.4rem;
+}
+
+.pagination-btn:hover:not([disabled]) {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.pagination-btn[disabled] {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-light);
+}
+
+.pagination-btn mat-icon {
+  margin: 0 0.4rem;
+  font-size: 1.6rem;
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.page-indicator {
+  font-weight: 500;
+  color: var(--text);
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 1.2rem;
+  border-radius: 3rem;
+  font-size: 1.4rem;
+}
+
+/* Media query for very small screens */
+@media (max-width: 48rem) {
+  .view-profile span {
+    display: none;
+  }
+
+  .view-profile {
+    padding: 0.5rem;
+  }
+}
